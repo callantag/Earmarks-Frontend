@@ -21,10 +21,11 @@ export default function MainNav() {
 
 	const navLinks = !user.userId ? (
 		<>
-			<Nav.Link as={Link} to="/login">
+			<Nav.Item className="navbar-text px-3">HELLO GUEST!</Nav.Item>
+			<Nav.Link as={Link} to="/login" className="px-3">
 				Login
 			</Nav.Link>
-			<Nav.Link as={Link} to="/register">
+			<Nav.Link as={Link} to="/register" className="px-3">
 				Register
 			</Nav.Link>
 		</>

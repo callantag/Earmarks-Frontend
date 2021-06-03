@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { ApplicationContext } from "../contexts/ApplicationContext";
 import { Button, Card, Form } from "react-bootstrap";
 
-export default function ExpenseForm({ setIsRedirect }) {
+export default function BudgetForm({ setIsRedirect }) {
 	const { setUser } = useContext(ApplicationContext);
 	const { categories, entries, setEntries, expense, setExpense } =
 		useContext(ApplicationContext);
@@ -32,7 +32,7 @@ export default function ExpenseForm({ setIsRedirect }) {
 				console.log(res);
 				setIsLoading(false);
 				if (res.status === 200) {
-					alert("Expense has been expensed");
+					alert("Budget entry has been added");
 					return res;
 				} else {
 					return res.json().then((json) => {
@@ -72,7 +72,7 @@ export default function ExpenseForm({ setIsRedirect }) {
 			<Card.Body>
 				<Form onSubmit={handleSubmit}>
 					<h3 className="text-center pb-3" st>
-						Expense
+						Add Budget Entry
 					</h3>
 
 					<Form.Group controlId="description">
@@ -100,6 +100,7 @@ export default function ExpenseForm({ setIsRedirect }) {
 							onChange={handleChange}
 							value={expense.category}
 						>
+							<option>Select a category</option>
 							{categories.map((e) => (
 								<option value={e._id}>{e.name}</option>
 							))}
@@ -107,12 +108,16 @@ export default function ExpenseForm({ setIsRedirect }) {
 					</Form.Group>
 
 					<Form.Group controlId="income">
-						<Form.Label>Income:</Form.Label>
+						<Form.Label>Income/Expense:</Form.Label>
 						<Form.Control
 							type="text"
 							onChange={handleChange}
 							value={expense.income}
 						/>
+						<p style={{ fontSize: "14px" }}>
+							{" "}
+							Input "true" for Income and "false" for Expense{" "}
+						</p>
 					</Form.Group>
 
 					<div className="text-center py-2">

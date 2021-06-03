@@ -3,6 +3,8 @@ import React, { useContext } from "react";
 import { ApplicationContext } from "./../contexts/ApplicationContext";
 import CategorySummary from "./CategorySummary";
 
+import { Table, Button } from "react-bootstrap";
+
 const BudgetSummary = () => {
     const { categories, entries, setEntries, expense, setExpense } =
         useContext(ApplicationContext);
@@ -27,7 +29,7 @@ const BudgetSummary = () => {
             .then((res) => {
                 console.log(res);
                 if (res.status === 200) {
-                    alert("Expense has been unexpensed");
+                    alert("Budget entry has been removed");
                     return res;
                 } else {
                     return res.json().then((json) => {
@@ -51,45 +53,65 @@ const BudgetSummary = () => {
 
     return (
         <>
-            <CategorySummary />
             <div style={{ background: "white", width: 700, margin: "0 auto" }}>
-                Total Income: {income}
-                <br />
-                Total Expense: {expenditure}
-                <br />
-                <table style={{ width: "95%", margin: "10px auto" }}>
+                {budget > 0
+                    ? `Net income: ${Math.abs(budget).toFixed(2)}`
+                    : `Budget income: ${Math.abs(budget).toFixed(2)}`}
+                <Table
+                    striped
+                    bordered
+                    hover
+                    size="sm"
+                    style={{ width: "95%", margin: "10px auto" }}
+                >
                     <tr>
                         <th>Description</th>
                         <th>Amount</th>
                         <th>Category</th>
-                        <th>Income</th>
+                        <th>Income/Expense</th>
+                        <th colSpan="2"> </th>
                     </tr>
                     {entries.map((entry) => (
                         <tr>
                             <td>{entry.description}</td>
-                            <td>{entry.amount}</td>
+                            <td>{entry.amount.toFixed(2)}</td>
                             <td>
                                 {categories.find(
                                     (e) => e._id === entry.category
                                 )?.name || "-"}
                             </td>
-                            <td>{entry.income ? "Y" : "N"}</td>
+                            <td>{entry.income ? "Income" : "Expense"}</td>
                             <td>
-                                <button onClick={handleEdit(entry)}>
-                                    Edit
-                                </button>
+                                {" "}
+                                <Button
+                                    className="btn-sm btn-secondary mr-3"
+                                    onClick={handleEdit(entry)}
+                                >
+                                    &#x270E;
+                                </Button>
                             </td>
                             <td>
-                                <button onClick={handleDelete(entry)}>
-                                    Delete
-                                </button>
+                                {" "}
+                                <Button
+                                    className="btn-sm btn-danger"
+                                    onClick={handleDelete(entry)}
+                                >
+                                    &#x1F5D1;
+                                </Button>
                             </td>
                         </tr>
                     ))}
-                </table>
-                {budget > 0
-                    ? `Net income: ${Math.abs(budget)}`
-                    : `Budget income: ${Math.abs(budget)}`}
+                </Table>
+                <span className="px-3">
+                    {" "}
+                    Total Income: {income.toFixed(2)}{" "}
+                </span>
+                <span className="px-3">
+                    {" "}
+                    Total Expense: {expenditure.toFixed(2)}{" "}
+                </span>
+
+                <br />
             </div>
         </>
     );
