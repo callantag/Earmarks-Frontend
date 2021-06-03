@@ -46,7 +46,7 @@ export default function ApplicationProvider(props) {
 		if (!user.userId) return;
 
 		const entriesUrl = user.isAdmin
-			? "http://localhost:4000/api/entries/all"
+			? "https://earmarks-backend.herokuapp.com/api/entries/all"
 			: // "https://earmarks-backend.herokuapp.com/api/entries/all" :
 			  "https://earmarks-backend.herokuapp.com/api/entries";
 

@@ -19,12 +19,12 @@ const App = () => {
         <Router>
           <MainNav />
           <Switch>
+            <AdminRoutes path="/admin" component={UsersEntries} />
             <Route exact path="/" component={Home} />
             <Route exact path="/dash" component={Dashboard} />
             <Route exact path="/categories" component={Categories} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <AdminRoutes exact path="/admin" component={UsersEntries} />
             <Route path="*" component={Page404} />
           </Switch>
         </Router>
