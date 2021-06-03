@@ -45,14 +45,19 @@ export default function ApplicationProvider(props) {
 	useEffect(() => {
 		if (!user.userId) return;
 
-		fetch("https://earmarks-backend.herokuapp.com/api/entries", {
+		const entriesUrl = user.isAdmin ? 
+			"http://localhost:4000/api/entries/all" :
+			// "https://earmarks-backend.herokuapp.com/api/entries/all" :
+			"https://earmarks-backend.herokuapp.com/api/entries";
+
+		fetch(entriesUrl, {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem("token")}`,
 			},
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				// console.log(data)
+				console.log(data)
 				setEntries(data);
 			})
 			.catch((err) => console.log(err));

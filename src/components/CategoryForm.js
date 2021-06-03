@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Button, Card, Form, Table } from "react-bootstrap";
+import { Button, Card, Form } from "react-bootstrap";
 
 import { ApplicationContext } from "./../contexts/ApplicationContext";
 
@@ -29,7 +29,7 @@ const CategoryForm = () => {
             .then((res) => {
                 console.log(res);
                 if (res.status === 200) {
-                    alert("Category has been added.");
+                    alert("Category has been submitted.");
                     return res;
                 } else {
                     return res.json().then((json) => {

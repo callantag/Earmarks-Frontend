@@ -32,7 +32,7 @@ export default function BudgetForm({ setIsRedirect }) {
 				console.log(res);
 				setIsLoading(false);
 				if (res.status === 200) {
-					alert("Budget entry has been added");
+					alert("Budget entry has been submitted");
 					return res;
 				} else {
 					return res.json().then((json) => {
@@ -107,17 +107,27 @@ export default function BudgetForm({ setIsRedirect }) {
 						</Form.Control>
 					</Form.Group>
 
-					<Form.Group controlId="income">
-						<Form.Label>Income/Expense:</Form.Label>
+					<Form.Group
+						controlId="income"
+						className="d-flex align-items-end"
+					>
+						<Form.Label>Income:</Form.Label>
 						<Form.Control
-							type="text"
-							onChange={handleChange}
-							value={expense.income}
+							value="true"
+							type="radio"
+							name="income"
+							onClick={handleChange}
+							required
 						/>
-						<p style={{ fontSize: "14px" }}>
-							{" "}
-							Input "true" for Income and "false" for Expense{" "}
-						</p>
+						<Form.Label>Expense:</Form.Label>
+						<Form.Control
+							value="false"
+							type="radio"
+							label="Expense"
+							name="income"
+							onClick={handleChange}
+							required
+						/>
 					</Form.Group>
 
 					<div className="text-center py-2">

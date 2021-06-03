@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 
 import { ApplicationContext } from "./../contexts/ApplicationContext";
-import CategorySummary from "./CategorySummary";
 
 import { Table, Button } from "react-bootstrap";
 
@@ -10,11 +9,11 @@ const BudgetSummary = () => {
         useContext(ApplicationContext);
 
     const income = entries.reduce(
-        (acc, e) => acc + (!e.income ? e.amount : 0),
+        (acc, e) => acc + (e.income ? e.amount : 0),
         0
     );
     const expenditure = entries.reduce(
-        (acc, e) => acc + (e.income ? e.amount : 0),
+        (acc, e) => acc + (!e.income ? e.amount : 0),
         0
     );
 
@@ -57,9 +56,25 @@ const BudgetSummary = () => {
     return (
         <>
             <div style={{ background: "white", width: 700, margin: "0 auto" }}>
-                {budget > 0
-                    ? `Net income: ${Math.abs(budget).toFixed(2)}`
-                    : `Budget income: ${Math.abs(budget).toFixed(2)}`}
+                <h3 style={{ padding: "10px 0" }}>Budget Summary</h3>
+
+                {budget <= 0 ? (
+                    <h1>
+                        BUDGET TOTAL:
+                        <span style={{ color: "red" }}>
+                            {" "}
+                            ${budget.toFixed(2)}{" "}
+                        </span>{" "}
+                    </h1>
+                ) : (
+                    <h1>
+                        NET INCOME:
+                        <span style={{ color: "teal" }}>
+                            ${budget.toFixed(2)}{" "}
+                        </span>
+                    </h1>
+                )}
+
                 <Table
                     striped
                     bordered
@@ -105,16 +120,22 @@ const BudgetSummary = () => {
                         </tr>
                     ))}
                 </Table>
-                <span className="px-3">
-                    {" "}
-                    Total Income: {income.toFixed(2)}{" "}
-                </span>
-                <span className="px-3">
-                    {" "}
-                    Total Expense: {expenditure.toFixed(2)}{" "}
-                </span>
-
-                <br />
+                <h4>
+                    <span style={{ margin: "0 15px" }}>
+                        Total Income:
+                        <span style={{ color: "green" }}>
+                            ${income.toFixed(2)}
+                        </span>
+                    </span>
+                    <span style={{ margin: "0 15px" }}>
+                        Total Expenses:{" "}
+                        <span style={{ color: "red" }}>
+                            {" "}
+                            ${expenditure.toFixed(2)}{" "}
+                        </span>
+                    </span>
+                </h4>
+                <h5 style={{ color: "grey" }}>...</h5>
             </div>
         </>
     );

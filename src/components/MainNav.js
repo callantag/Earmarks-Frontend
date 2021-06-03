@@ -19,36 +19,52 @@ export default function MainNav() {
 		localStorage.clear();
 	};
 
-	const navLinks = !user.userId ? (
-		<>
-			<Nav.Item className="navbar-text px-3">HELLO GUEST!</Nav.Item>
-			<Nav.Link as={Link} to="/login" className="px-3">
-				Login
-			</Nav.Link>
-			<Nav.Link as={Link} to="/register" className="px-3">
-				Register
-			</Nav.Link>
-		</>
-	) : (
-		<>
-			<Nav.Link as={Link} to="/dash">
-				{user.firstName}'s Dashboard{" "}
-			</Nav.Link>
-			<Nav.Link as={Link} to="/" onClick={handleClick}>
-				Logout
-			</Nav.Link>
-		</>
-	);
+	const navLinks = () => {
+		if (user.isAdmin) {
+			return (
+				<>
+					<Nav.Link as={Link} to="/dash/allUsers">
+						Users Entries
+					</Nav.Link>
+					<Nav.Link as={Link} to="/" onClick={handleClick}>
+						Logout
+					</Nav.Link>
+				</>
+			);
+		}
 
-	const adminLink = user.isAdmin ? (
-		<>
-			<Nav.Link as={Link} to="/dash/allUsers">
-				Users Entries
-			</Nav.Link>
-		</>
-	) : (
-		""
-	);
+
+		if (user.userId) {
+			return (
+				<>
+					<Nav.Link as={Link} to="/dash">
+						{user.firstName}'s Dashboard{" "}
+					</Nav.Link>
+					<Nav.Link as={Link} to="categories">
+						Categories
+					</Nav.Link>
+					<Nav.Link as={Link} to="/" onClick={handleClick}>
+						Logout
+					</Nav.Link>
+				</>
+			);
+		}
+
+		return (
+			<>
+				<Nav.Item className="navbar-text px-3">
+					HELLO GUEST!
+				</Nav.Item>
+				<Nav.Link as={Link} to="/login" className="px-3">
+					Login
+				</Nav.Link>
+				<Nav.Link as={Link} to="/register" className="px-3">
+					Register
+				</Nav.Link>
+			</>
+		);
+	};
+
 	return (
 		<Navbar className="navbar" variant="dark" expand="md">
 			<Navbar.Brand as={Link} to="/">
@@ -57,10 +73,11 @@ export default function MainNav() {
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="ml-auto">
-					{adminLink}
-					{navLinks}
+					{navLinks()}
 				</Nav>
 			</Navbar.Collapse>
 		</Navbar>
 	);
+
+
 }

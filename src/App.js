@@ -6,8 +6,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Page404 from "./pages/Page404";
 import Dashboard from "./pages/Dashboard";
-import UsersEntries from "./pages/UsersEntries";
+import Categories from "./pages/Categories";
 import AdminRoutes from "./components/AdminRoutes";
+import UsersEntries from "./pages/UsersEntries";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ApplicationProvider from "./contexts/ApplicationContext";
 
@@ -20,9 +21,10 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/dash" component={Dashboard} />
+            <Route exact path="/categories" component={Categories} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <AdminRoutes path="/dash/allUsers" component={UsersEntries} />
+            <AdminRoutes exact path="/dash/allUsers" component={UsersEntries} />
             <Route path="*" component={Page404} />
           </Switch>
         </Router>

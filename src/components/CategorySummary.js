@@ -44,8 +44,14 @@ const CategorySummary = () => {
     return (
         <>
             <div style={{ background: "white", width: 700, margin: "0 auto" }}>
-                <h3>Categories</h3>
-                <Table style={{ width: "95%", margin: "10px auto" }}>
+                <h3 style={{ padding: "10px 0" }}>Categories</h3>
+                <Table
+                    striped
+                    bordered
+                    hover
+                    size="sm"
+                    style={{ width: "95%", margin: "10px auto" }}
+                >
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
@@ -76,6 +82,7 @@ const CategorySummary = () => {
                         </tr>
                     ))}
                 </Table>
+                <h5 style={{ color: "grey" }}>...</h5>
             </div>
         </>
     );
