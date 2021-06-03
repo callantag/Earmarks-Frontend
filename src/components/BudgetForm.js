@@ -17,8 +17,8 @@ export default function BudgetForm({ setIsRedirect }) {
 		const isNew = !expense._id;
 
 		const url = isNew
-			? "//localhost:4000/api/entries"
-			: `//localhost:4000/api/entries/${expense._id}`;
+			? "https://earmarks-backend.herokuapp.com/api/entries"
+			: `https://earmarks-backend.herokuapp.com/api/entries/${expense._id}`;
 
 		fetch(url, {
 			method: isNew ? "POST" : "PUT",

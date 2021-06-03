@@ -15,8 +15,8 @@ const CategoryForm = () => {
         const isNew = !category._id;
 
         const url = isNew
-            ? "//localhost:4000/api/categories"
-            : `//localhost:4000/api/categories/${category._id}`;
+            ? "https://earmarks-backend.herokuapp.com/api/categories"
+            : `https://earmarks-backend.herokuapp.com/api/categories/${category._id}`;
 
         fetch(url, {
             method: isNew ? "POST" : "PUT",

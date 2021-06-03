@@ -8,13 +8,16 @@ const CategorySummary = () => {
         useContext(ApplicationContext);
 
     const handleDelete = (entry) => (evt) => {
-        fetch(`//localhost:4000/api/categories/${entry._id}`, {
-            method: "DELETE",
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-                "Content-Type": "application/json",
-            },
-        })
+        fetch(
+            `https://earmarks-backend.herokuapp.com/api/categories/${entry._id}`,
+            {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    "Content-Type": "application/json",
+                },
+            }
+        )
             .then((res) => {
                 console.log(res);
                 if (res.status === 200) {

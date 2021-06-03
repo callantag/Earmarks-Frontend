@@ -18,7 +18,7 @@ export default function RegisterForm({ setIsRedirect }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsLoading(true);
-		fetch("//localhost:4000/api/users/register", {
+		fetch("https://earmarks-backend.herokuapp.com/api/users/register", {
 			method: "POST",
 			body: JSON.stringify(credentials),
 			headers: {

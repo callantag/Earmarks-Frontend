@@ -29,7 +29,7 @@ export default function ApplicationProvider(props) {
 	useEffect(() => {
 		if (!user.userId) return;
 
-		fetch("http://localhost:4000/api/categories", {
+		fetch("https://earmarks-backend.herokuapp.com/api/categories", {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem("token")}`,
 			},
@@ -45,7 +45,7 @@ export default function ApplicationProvider(props) {
 	useEffect(() => {
 		if (!user.userId) return;
 
-		fetch("http://localhost:4000/api/entries", {
+		fetch("https://earmarks-backend.herokuapp.com/api/entries", {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem("token")}`,
 			},
@@ -63,7 +63,7 @@ export default function ApplicationProvider(props) {
 	useEffect(() => {
 		// ...................
 		// if (localStorage.getItem('token')) =fetch
-		fetch("http://localhost:4000/api/users", {
+		fetch("https://earmarks-backend.herokuapp.com/api/users", {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem("token")}`,
 			},

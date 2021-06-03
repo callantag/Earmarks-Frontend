@@ -15,7 +15,7 @@ export default function LoginForm({ setIsRedirect }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsLoading(true);
-		fetch("//localhost:4000/api/users/login", {
+		fetch("https://earmarks-backend.herokuapp.com/api/users/login", {
 			method: "POST",
 			body: JSON.stringify(credentials),
 			headers: {
@@ -38,11 +38,14 @@ export default function LoginForm({ setIsRedirect }) {
 
 				localStorage.setItem("token", access);
 				// console.log(access)
-				return fetch("http://localhost:4000/api/users", {
-					headers: {
-						Authorization: `Bearer ${access}`,
-					},
-				});
+				return fetch(
+					"https://earmarks-backend.herokuapp.com/api/users",
+					{
+						headers: {
+							Authorization: `Bearer ${access}`,
+						},
+					}
+				);
 			})
 			.then((res) => res.json())
 			.then((data) => {
