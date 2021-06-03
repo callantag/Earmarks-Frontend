@@ -1,0 +1,18 @@
+.styles {
+  opacity: 1;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(https://media.istockphoto.com/photos/closeup-view-of-yellow-piggy-bank-on-wooden-table-on-black-picture-id1053838686?k=6&m=1053838686&s=612x612&w=0&h=yac5qg07Y_d3iQUkVXptBfV6TTalLWCEjpK9EWtmVoA=);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: calc(100vh - 70.977px);
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
+}
+
+.textStyle {
+  font-family: "Righteous", cursive;
+  text-shadow: 0 1px black;
+  color: white;
+}

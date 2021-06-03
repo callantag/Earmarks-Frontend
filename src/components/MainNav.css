@@ -1,0 +1,8 @@
+.navbar-brand {
+  font-size: 30px;
+  font-family: "Righteous", cursive;
+}
+
+.navbar {
+  background-color: rgba(1, 1, 1, 0.2);
+}

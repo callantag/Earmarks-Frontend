@@ -1,0 +1,27 @@
+.logFont {
+  font-family: "Righteous", cursive;
+  text-align: center;
+}
+
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url(https://wi.wallpapertip.com/wsimgs/84-843418_background-black-darkblue-light-textures-texture-download-background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+.user,
+.pass {
+  width: 100%;
+}
+
+.loginCard {
+  padding: 10px 20px;
+  margin-top: 50px;
+}
+
+.logFont2 {
+  text-align: center;
+}
