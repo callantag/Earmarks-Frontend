@@ -45,10 +45,10 @@ export default function ApplicationProvider(props) {
 	useEffect(() => {
 		if (!user.userId) return;
 
-		const entriesUrl = user.isAdmin ? 
-			"http://localhost:4000/api/entries/all" :
-			// "https://earmarks-backend.herokuapp.com/api/entries/all" :
-			"https://earmarks-backend.herokuapp.com/api/entries";
+		const entriesUrl = user.isAdmin
+			? "http://localhost:4000/api/entries/all"
+			: // "https://earmarks-backend.herokuapp.com/api/entries/all" :
+			  "https://earmarks-backend.herokuapp.com/api/entries";
 
 		fetch(entriesUrl, {
 			headers: {
@@ -57,7 +57,7 @@ export default function ApplicationProvider(props) {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data)
+				console.log(data);
 				setEntries(data);
 			})
 			.catch((err) => console.log(err));
@@ -66,8 +66,6 @@ export default function ApplicationProvider(props) {
 	// Fetch
 	//useEffect(<function to run>, <array of state that you are watching>)
 	useEffect(() => {
-		// ...................
-		// if (localStorage.getItem('token')) =fetch
 		fetch("https://earmarks-backend.herokuapp.com/api/users", {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem("token")}`,

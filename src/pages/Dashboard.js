@@ -8,13 +8,17 @@ export default function Dashboard() {
 	return (
 		<div className="mt-5 text-center container">
 			<Row className="justify-content-center align-items-center">
-				<Col className="mx-auto" xs={12} sm={10} md={3}>
+				<Col className="mx-auto my-3">
 					<BudgetForm />
 				</Col>
-				<Col className="mx-auto" xs={12} sm={10} md={8}>
+				<Col className="mx-auto my-3">
 					<BudgetSummary />
 				</Col>
 			</Row>
 		</div>
 	);
+}
+
+{
+	/*xs={12} sm={10} md={12}*/
 }

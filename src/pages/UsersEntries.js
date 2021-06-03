@@ -1,6 +1,3 @@
-// export default function UsersEntries() {
-// 	return <p style={{ color: "white" }}>UsersEntries</p>;
-// }
 import React, { useState, useContext } from "react";
 
 import { ApplicationContext } from "./../contexts/ApplicationContext";
@@ -9,12 +6,11 @@ import { Table, Button } from "react-bootstrap";
 
 import { Form } from "react-bootstrap";
 
-
 const UsersEntries = () => {
-	const [search, setSearch] = useState('');
+	const [search, setSearch] = useState("");
 
 	const handleChange = (e) => {
-		setSearch(e.target.value)
+		setSearch(e.target.value);
 	};
 
 	const { categories, entries, setEntries, expense, setExpense } =
@@ -31,7 +27,11 @@ const UsersEntries = () => {
 
 	const budget = income - expenditure;
 
-	const filter = e => (!search || e.user.firstName.includes(search) || e.user.lastName.includes(search) || e.description.includes(search))
+	const filter = (e) =>
+		!search ||
+		e.user.firstName.includes(search) ||
+		e.user.lastName.includes(search) ||
+		e.description.includes(search);
 
 	return (
 		<>
@@ -39,12 +39,12 @@ const UsersEntries = () => {
 				style={{
 					background: "white",
 					width: 700,
-					margin: "0 auto",
+					margin: "50px auto 0",
 					textAlign: "center",
 				}}
 			>
 				<h3 style={{ padding: "10px 0" }}>
-					Budget Summary for insertUserEmail
+					Budget Summary for All Users
 				</h3>
 
 				{budget <= 0 ? (
@@ -70,6 +70,7 @@ const UsersEntries = () => {
 						type="text"
 						onChange={handleChange}
 						value={search}
+						style={{ width: "94%", margin: "0 auto" }}
 					/>
 				</Form.Group>
 
@@ -89,7 +90,9 @@ const UsersEntries = () => {
 					</tr>
 					{entries.filter(filter).map((entry) => (
 						<tr>
-							<td>{entry.user.firstName} {entry.user.lastName}</td>
+							<td>
+								{entry.user.firstName} {entry.user.lastName}
+							</td>
 							<td>{entry.description}</td>
 							<td>{entry.amount.toFixed(2)}</td>
 							<td>

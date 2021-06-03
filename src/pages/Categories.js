@@ -8,10 +8,10 @@ export default function Dashboard() {
 	return (
 		<div className="mt-5 text-center container">
 			<Row className="justify-content-center align-items-center">
-				<Col className="mx-auto" xs={12} sm={10} md={4}>
+				<Col className="mx-auto my-3">
 					<CategoryForm />
 				</Col>
-				<Col className="mx-auto " xs={12} sm={10} md={8}>
+				<Col className="mx-auto my-3">
 					<CategorySummary />
 				</Col>
 			</Row>

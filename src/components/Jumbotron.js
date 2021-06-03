@@ -6,7 +6,7 @@ const Jumbotron = () => (
       <div className="row text-center">
         <div
           className="col-md-12 col-12 textStyle"
-          style={{ fontSize: 30, padding: 20 }}
+          style={{ fontSize: 30, padding: 50 }}
         >
           <p>Welcome to</p>
         </div>
@@ -21,8 +21,8 @@ const Jumbotron = () => (
         >
           <p>
             The most convenient way to manage your personal income and expenses.
-            Register now and start earmarking your budget spending!
           </p>
+          <p>Register now and start earmarking your budget spending!</p>
         </div>
       </div>
     </div>

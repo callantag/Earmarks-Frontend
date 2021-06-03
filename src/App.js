@@ -24,7 +24,7 @@ const App = () => {
             <Route exact path="/categories" component={Categories} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <AdminRoutes exact path="/dash/allUsers" component={UsersEntries} />
+            <AdminRoutes exact path="/admin" component={UsersEntries} />
             <Route path="*" component={Page404} />
           </Switch>
         </Router>
