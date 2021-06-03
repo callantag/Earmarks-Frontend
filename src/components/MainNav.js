@@ -30,10 +30,12 @@ export default function MainNav() {
 		</>
 	) : (
 		<>
-			<Nav.Link as={Link} to="/transactions">
+			<Nav.Link as={Link} to="/dash">
 				{user.firstName}'s Dashboard{" "}
 			</Nav.Link>
-			<Nav.Link onClick={handleClick}>Logout</Nav.Link>
+			<Nav.Link as={Link} to="/" onClick={handleClick}>
+				Logout
+			</Nav.Link>
 		</>
 	);
 
@@ -55,9 +57,6 @@ export default function MainNav() {
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="ml-auto">
 					{adminLink}
-					<Nav.Link as={Link} to="/dash">
-						Dashboard(No auth-Remove later)
-					</Nav.Link>
 					{navLinks}
 				</Nav>
 			</Navbar.Collapse>
