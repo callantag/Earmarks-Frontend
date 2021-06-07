@@ -6,3 +6,6 @@ To run:
 3) npm install
 4) npm start
 5) run with earmarks-backend (https://github.com/callantag/earmarks-backend)
+
+May also open online via:
+https://earmarks-frontend.herokuapp.com/
